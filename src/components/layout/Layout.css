@@ -1,0 +1,31 @@
+.layout-header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+}
+
+.layout-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+}
+
+.layout-nav ul li {
+    margin: 0 10px;
+}
+
+.layout-nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.layout-nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.layout-content {
+    padding: 20px;
+}

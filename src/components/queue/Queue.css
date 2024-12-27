@@ -1,0 +1,15 @@
+/* src/components/queue/Queue.css */
+.list-group-numbered {
+    padding-left: 0; /* Remove default padding from the list */
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 0; /* Remove default padding */
+}
+
+.list-group-item div {
+    margin-left: 10px; /* Adjust the margin as needed */
+}

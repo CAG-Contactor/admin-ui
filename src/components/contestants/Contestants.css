@@ -1,0 +1,10 @@
+.btn-submit {
+    background-color: #ff6600;
+    border-color: #ff6600;
+}
+
+.btn-clear {
+    background-color: #666666;
+    border-color: #666666;
+    color: #ffffff;
+}
