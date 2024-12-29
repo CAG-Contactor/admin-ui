@@ -27,9 +27,5 @@ WithValidationErrors.args = {
     initialFormData: {
         name: "Invalid Name123",
         email: "invalid-email",
-    },
-    initialErrors: {
-        name: "Invalid name.",
-        email: "Invalid email address.",
-    },
+    }
 };

@@ -6,7 +6,7 @@ import Contestants from "./components/contestants/Contestants";
 import Queue from "./components/queue/Queue";
 import Leaderboard from "./components/leaderboard/Leaderboard";
 import {fetchContestants, fetchLeaderBoard, fetchQueue} from "./api/BackendAPI";
-import { Contestant, QueueItem, LeaderBoardItem} from "./types";
+import { Contestant, QueueItem, LeaderBoardItem} from "./types/types";
 
 const App: React.FC = () => {
     const [contestants, setContestants] = useState<Contestant[]>([]);

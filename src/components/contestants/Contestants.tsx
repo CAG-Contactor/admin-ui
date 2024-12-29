@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Contestant } from "../../types";
+import { Contestant } from "../../types/types";
 import { ListGroup, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { enqueueContestant, deleteContestant } from "../../api/BackendAPI";
-import "./Contestants.css";
-import "../register/Register.css"; // Import Register.css to reuse button styles
+import "../../index.css"; // Import index.css to reuse global styles
+import "./Contestants.css"; // Import Contestants.css to reuse Contestants-specific styles
 
 interface ContestantsProps {
     initialContestants: Contestant[];

@@ -1,16 +1,27 @@
-.container {
+.leaderboard-container {
     margin-top: 5rem;
     padding: 2rem;
-    background-color: #f5f5f5;
+    background-color: #6a87a9 !important; /* Blue background */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.text-center {
-    color: #333333;
+.leaderboard-title {
+    color: #dbe9f5 !important; /* Light blue for better contrast */
+    text-align: center;
+    margin-bottom: 1.5rem;
 }
 
-.list-group-item {
-    background-color: #ffffff;
+.leaderboard-item {
+    background-color: #d8e6f5; /* Light blue background */
     color: #333333;
+    border: 1px solid #6a87a9; /* Blue border */
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.leaderboard-item:hover {
+    background-color: #c8d6f5; /* Darker blue on hover */
+    border-color: #5a6a87; /* Darker blue border on hover */
 }

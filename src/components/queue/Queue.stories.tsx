@@ -1,8 +1,7 @@
-// src/components/queue/Queue.stories.tsx
 import React from "react";
 import { StoryFn, Meta } from "@storybook/react";
 import Queue from "./Queue";
-import { QueueItem } from "../../types";
+import { QueueItem } from "../../types/types";
 
 export default {
     title: "Components/Queue",

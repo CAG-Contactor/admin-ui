@@ -1,24 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { FormData, Errors } from "../../types";
+import React, { useState } from "react";
+import { Errors, FormData } from "../../types/types";
 import { registerContestant } from "../../api/BackendAPI";
 import { Form, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "../../index.css";
 import "./Register.css";
 
 interface RegisterProps {
     initialFormData?: FormData;
-    initialErrors?: Errors;
 }
 
-const Register: React.FC<RegisterProps> = ({ initialFormData = { name: "", email: "" }, initialErrors = {} }) => {
+const Register: React.FC<RegisterProps> = ({ initialFormData = { name: "", email: "" } }) => {
     const [formData, setFormData] = useState<FormData>(initialFormData);
-    const [errors, setErrors] = useState<Errors>(initialErrors);
+    const [errors, setErrors] = useState<Errors>({});
     const [message, setMessage] = useState<string>("");
-
-    useEffect(() => {
-        setFormData(initialFormData);
-        setErrors(initialErrors);
-    }, [initialFormData, initialErrors]);
 
     const validate = (): boolean => {
         const newErrors: Errors = {};
@@ -41,7 +36,7 @@ const Register: React.FC<RegisterProps> = ({ initialFormData = { name: "", email
         if (!validate()) return;
 
         try {
-            const response = await registerContestant(formData);
+            await registerContestant(formData);
             setMessage("Registration successful!");
             setFormData({ name: "", email: "" });
             setErrors({});
@@ -94,7 +89,7 @@ const Register: React.FC<RegisterProps> = ({ initialFormData = { name: "", email
                     <Button type="submit" className="btn-submit">
                         Submit
                     </Button>
-                    <Button type="button" variant="secondary" onClick={handleClear} className="btn-clear">
+                    <Button type="button" onClick={handleClear} className="btn-clear" variant="light">
                         Clear
                     </Button>
                 </div>

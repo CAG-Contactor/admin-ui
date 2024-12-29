@@ -2,7 +2,7 @@
 import React from "react";
 import { ListGroup } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { LeaderBoardItem } from "../../types";
+import { LeaderBoardItem } from "../../types/types";
 import "./Leaderboard.css";
 
 interface LeaderboardProps {

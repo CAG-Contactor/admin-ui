@@ -1,6 +1,6 @@
 .layout-header {
-    background-color: #333;
-    color: white;
+    background-color: #5a6a87; /* Darker blue for header background */
+    color: #dbe9f5; /* Light blue for text contrast */
     padding: 10px;
 }
 
@@ -17,15 +17,20 @@
 }
 
 .layout-nav ul li a {
-    color: white;
+    color: #dbe9f5; /* Light blue for links */
     text-decoration: none;
     font-size: 18px;
 }
 
 .layout-nav ul li a:hover {
     text-decoration: underline;
+    color: #c8d6f5; /* Softer blue for hover effect */
 }
 
 .layout-content {
     padding: 20px;
+    background-color: #d8e6f5; /* Softer blue for content background */
+    color: #333333; /* Dark text for contrast */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

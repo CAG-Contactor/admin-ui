@@ -1,7 +1,7 @@
 import React from "react";
 import { StoryFn, Meta } from "@storybook/react";
 import Leaderboard from "./Leaderboard";
-import { LeaderBoardItem } from "../../types";
+import { LeaderBoardItem } from "../../types/types";
 
 export default {
     title: "Components/Leaderboard",

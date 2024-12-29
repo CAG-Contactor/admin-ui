@@ -1,6 +1,5 @@
-import {FormData, LeaderBoardItem, QueueItem, RegisterContestantResponse} from "../types";
-import { Contestant } from "../types";
-import { Result } from "../types";
+import {FormData, LeaderBoardItem, QueueItem, RegisterContestantResponse} from "../types/types";
+import { Contestant } from "../types/types";
 
 const BASE_URL = "http://localhost:8080/api/v1";
 

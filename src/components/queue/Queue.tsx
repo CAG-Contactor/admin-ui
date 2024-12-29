@@ -1,7 +1,7 @@
 import React from "react";
 import { ListGroup, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { QueueItem } from "../../types";
+import { QueueItem } from "../../types/types";
 import "./Queue.css";
 import "../register/Register.css"; // Import Register.css to reuse button styles
 
