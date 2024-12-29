@@ -2,19 +2,6 @@
 
 Ett generiskt admin UI byggt i React för att hantera tävlande. Applikationen är designad för att vara återanvändbar och flexibel, vilket gör det möjligt att anpassa och återanvända den från år till år för olika typer av tävlingar eller evenemang.
 
-## Teknik
-
-Projektet använder följande tekniker och verktyg:
-
-- **React**: Ett JavaScript-bibliotek för att bygga användargränssnitt.
-- **TypeScript**: Ett typat superset av JavaScript som kompileras till ren JavaScript.
-- **React Bootstrap**: Bootstrap-komponenter byggda med React.
-- **Storybook**: Ett verktyg för att utveckla och dokumentera UI-komponenter i isolering.
-- **Jest**: Ett JavaScript-testningsramverk.
-- **React Testing Library**: Ett verktyg för att testa React-komponenter.
-- **Webpack**: En modulbuntare för JavaScript-applikationer.
-- **Yarn** och **npm**: Paket- och beroendehanterare.
-
 ## Funktionalitet
 
 Applikationen består av 4 vyer:
