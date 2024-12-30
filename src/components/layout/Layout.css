@@ -1,6 +1,6 @@
 .layout-header {
-    background-color: #5a6a87; /* Darker blue for header background */
-    color: #dbe9f5; /* Light blue for text contrast */
+    background-color:black; /* Darker blue for header background */
+    color: whitesmoke; /* Light blue for text contrast */
     padding: 10px;
 }
 
@@ -29,8 +29,8 @@
 
 .layout-content {
     padding: 20px;
-    background-color: #d8e6f5; /* Softer blue for content background */
-    color: #333333; /* Dark text for contrast */
+    background-color: whitesmoke; /* Softer blue for content background */
+    color: black; /* Dark text for contrast */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

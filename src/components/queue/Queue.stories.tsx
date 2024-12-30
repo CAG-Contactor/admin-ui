@@ -22,8 +22,3 @@ WithInitialQueue.args = {
         { contestant: { name: "Bob", email: "bob@example.com" } },
     ] as QueueItem[],
 };
-
-export const WithInitialMessage = Template.bind({});
-WithInitialMessage.args = {
-    initialMessage: "This is an initial message.",
-};

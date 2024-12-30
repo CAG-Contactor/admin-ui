@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ListGroup, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { QueueItem } from "../../types/types";
@@ -7,28 +7,43 @@ import "../register/Register.css"; // Import Register.css to reuse button styles
 
 interface QueueProps {
     initialQueue: QueueItem[];
-    initialMessage?: string;
 }
 
-const Queue: React.FC<QueueProps> = ({ initialQueue = [], initialMessage = "" }) => {
+const Queue: React.FC<QueueProps> = ({ initialQueue = [] }) => {
+    const [queue, setQueue] = useState<QueueItem[]>(initialQueue);
+    const [message, setMessage] = useState<string>("");
+
+    const handleStartRace = (queueItem: QueueItem) => {
+        // Implement start race logic here
+        setMessage(`${queueItem.contestant.name} has started the race!`);
+    };
+
+    const handleRemoveQueueItem = (queueItem: QueueItem) => {
+        setQueue(queue.filter(item => item !== queueItem));
+        setMessage(`${queueItem.contestant.name} has been removed from the queue.`);
+    };
+
     return (
-        <div className="container">
-            <h1 className="text-center mb-4">Contestant Queue</h1>
-            {initialMessage && <p className="text-center">{initialMessage}</p>}
-            {initialQueue.length === 0 ? (
+        <div className="container queue-container">
+            <h1 className="text-center mb-4 queue-title">Contestant Queue</h1>
+            {message && <p className="text-center">{message}</p>}
+            {queue.length === 0 ? (
                 <p className="text-center">No contestants in queue.</p>
             ) : (
                 <ListGroup>
-                    {initialQueue.map((queueItem, index) => (
-                        <ListGroup.Item as="li" key={index} className="d-flex justify-content-between align-items-center list-group-item">
+                    {queue.map((queueItem, index) => (
+                        <ListGroup.Item key={index} className="d-flex justify-content-between align-items-center queue-item">
                             <div>
-                                <span>{queueItem.contestant.name}</span>
+                                <strong>{queueItem.contestant.name}</strong>
+                                <br />
+                                <span>{queueItem.contestant.email}</span>
+                                <br />
                             </div>
                             <div className="button-container">
-                                <Button variant="primary" className="btn-submit me-2">
+                                <Button variant="primary" className="btn-submit me-2" onClick={() => handleStartRace(queueItem)}>
                                     Start race
                                 </Button>
-                                <Button type="button" className="btn-clear">
+                                <Button type="button" className="btn-clear" onClick={() => handleRemoveQueueItem(queueItem)}>
                                     Remove
                                 </Button>
                             </div>

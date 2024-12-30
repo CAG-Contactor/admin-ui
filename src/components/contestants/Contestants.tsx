@@ -36,13 +36,13 @@ export const Contestants: React.FC<ContestantsProps> = ({ initialContestants }) 
     };
 
     return (
-        <div className="container">
-            <h1 className="text-center mb-4">Contestants</h1>
+        <div className="container list-group-container">
+            <h1 className="text-center mb-4 contestants-title">Contestants</h1>
             {message && <p className="text-center">{message}</p>}
             {contestants.length === 0 ? (
                 <p className="text-center">No contestants registered yet.</p>
             ) : (
-                <ListGroup>
+                <ListGroup className="list-group-container">
                     {contestants.map((contestant, index) => (
                         <ListGroup.Item key={index} className="d-flex justify-content-between align-items-center list-group-item">
                             <div>
