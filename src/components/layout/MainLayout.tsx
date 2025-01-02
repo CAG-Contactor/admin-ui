@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import "./Layout.css";
+import "./MainLayout.css";
 
-const Layout: React.FC = () => {
+const MainLayout: React.FC = () => {
     return (
         <div className="layout">
         <header className="layout-header">
@@ -22,4 +22,4 @@ const Layout: React.FC = () => {
 );
 };
 
-export default Layout;
+export default MainLayout;

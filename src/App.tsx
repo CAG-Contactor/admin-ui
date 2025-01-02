@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Layout from "./components/layout/Layout";
+import MainLayout from "./components/layout/MainLayout";
 import Register from "./components/register/Register";
 import Contestants from "./components/contestants/Contestants";
 import Queue from "./components/queue/Queue";
@@ -63,7 +63,7 @@ const App: React.FC = () => {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<Layout />}>
+                <Route path="/" element={<MainLayout />}>
                     <Route index element={<Register />} />
                     <Route path="register" element={<Register />} />
                     <Route path="contestants" element={<Contestants initialContestants={contestants} />} />
