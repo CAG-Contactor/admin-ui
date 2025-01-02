@@ -1,6 +1,14 @@
+:root {
+    --primary-color: #8B4513; /* Brown */
+    --secondary-color-cream: #F5F5DC; /* Cream */
+    --secondary-color-olive: #808000; /* Olive Green */
+    --secondary-color-orange: #CC5500; /* Burnt Orange */
+    --secondary-color-red: #8B0000; /* Dark Red */
+}
+
 .layout-header {
-    background-color:black; /* Darker blue for header background */
-    color: whitesmoke; /* Light blue for text contrast */
+    background-color: var(--primary-color); /* Use primary color for header background */
+    color: var(--secondary-color-cream); /* Use cream for text contrast */
     padding: 10px;
 }
 
@@ -17,20 +25,20 @@
 }
 
 .layout-nav ul li a {
-    color: #dbe9f5; /* Light blue for links */
+    color: var(--secondary-color-cream); /* Use cream for links */
     text-decoration: none;
     font-size: 18px;
 }
 
 .layout-nav ul li a:hover {
     text-decoration: underline;
-    color: #c8d6f5; /* Softer blue for hover effect */
+    color: var(--secondary-color-orange); /* Use burnt orange for hover effect */
 }
 
 .layout-content {
     padding: 20px;
-    background-color: whitesmoke; /* Softer blue for content background */
-    color: black; /* Dark text for contrast */
+    background-color: var(--secondary-color-cream); /* Use cream for content background */
+    color: var(--primary-color); /* Use primary color for text */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

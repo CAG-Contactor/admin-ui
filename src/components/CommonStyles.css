@@ -1,5 +1,7 @@
+@import './layout/MainLayout.css';
+
 .title {
-    color: #000000;
+    color: var(--primary-color);
     text-align: center;
     margin-bottom: 1.5rem;
 }
@@ -7,23 +9,23 @@
 .container {
     margin-top: 5rem;
     padding: 2rem;
-    background-color: #ffffff;
+    background-color: var(--secondary-color-cream);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .text-center {
-    color: #333333;
+    color: var(--primary-color);
 }
 
 /* List group styles */
 
 .list-group-item {
-    background-color: #ffffff;
-    color: #333333;
+    background-color: var(--secondary-color-cream);
+    color: var(--primary-color);
     padding: 0.5rem 0.8rem;
     border-radius: 8px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--secondary-color-olive);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     font-size: 0.9rem;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -34,7 +36,7 @@
 }
 
 .list-group-item:hover {
-    background-color: #f9f9f9;
+    background-color: var(--secondary-color-olive);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
@@ -46,23 +48,23 @@
 }
 
 .btn-submit {
-    background-color: #007bff !important;
-    border-color: #007bff !important;
-    color: #ffffff !important;
+    background-color: var(--secondary-color-orange) !important;
+    border-color: var(--secondary-color-orange) !important;
+    color: var(--secondary-color-cream) !important;
 }
 
 .btn-submit:hover {
-    background-color: #0056b3 !important;
-    border-color: #0056b3 !important;
+    background-color: var(--secondary-color-red) !important;
+    border-color: var(--secondary-color-red) !important;
 }
 
 .btn-clear {
-    background-color: #dc3545 !important;
-    border-color: #dc3545 !important;
-    color: #ffffff !important;
+    background-color: var(--secondary-color-red) !important;
+    border-color: var(--secondary-color-red) !important;
+    color: var(--secondary-color-cream) !important;
 }
 
 .btn-clear:hover {
-    background-color: #c82333 !important;
-    border-color: #c82333 !important;
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
 }
