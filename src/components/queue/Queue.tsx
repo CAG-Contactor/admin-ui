@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { ListGroup, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { QueueItem } from "../../types/types";
-import "./Queue.css";
-import "../register/Register.css"; // Import Register.css to reuse button styles
+import "../CommonStyles.css";
+import "../../index.css";
 
 interface QueueProps {
     initialQueue: QueueItem[];
@@ -25,7 +25,7 @@ const Queue: React.FC<QueueProps> = ({ initialQueue = [] }) => {
 
     return (
         <div className="container queue-container">
-            <h1 className="text-center mb-4 queue-title">Contestant Queue</h1>
+            <h1 className="text-center mb-4 title">Contestant Queue</h1>
             {message && <p className="text-center">{message}</p>}
             {queue.length === 0 ? (
                 <p className="text-center">No contestants in queue.</p>

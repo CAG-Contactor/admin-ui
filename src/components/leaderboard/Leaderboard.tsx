@@ -2,7 +2,7 @@ import React from "react";
 import { ListGroup } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { LeaderBoardItem } from "../../types/types";
-import "./Leaderboard.css";
+import "../CommonStyles.css";
 
 interface LeaderboardProps {
     initialLeaderboard: LeaderBoardItem[];
@@ -11,7 +11,7 @@ interface LeaderboardProps {
 const Leaderboard: React.FC<LeaderboardProps> = ({ initialLeaderboard }) => {
     return (
         <div className="container leaderboard-container">
-            <h1 className="text-center mb-4 leaderboard-title">Leaderboard</h1>
+            <h1 className="text-center mb-4 title">Leaderboard</h1>
             {initialLeaderboard.length === 0 ? (
                 <p className="text-center">No results available.</p>
             ) : (

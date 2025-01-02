@@ -3,8 +3,8 @@ import { Contestant } from "../../types/types";
 import { ListGroup, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { enqueueContestant, deleteContestant } from "../../api/BackendAPI";
-import "../../index.css"; // Import index.css to reuse global styles
-import "./Contestants.css"; // Import Contestants.css to reuse Contestants-specific styles
+import "../../index.css";
+import "../CommonStyles.css";
 
 interface ContestantsProps {
     initialContestants: Contestant[];
@@ -37,7 +37,7 @@ export const Contestants: React.FC<ContestantsProps> = ({ initialContestants }) 
 
     return (
         <div className="container list-group-container">
-            <h1 className="text-center mb-4 contestants-title">Contestants</h1>
+            <h1 className="text-center mb-4 title">Contestants</h1>
             {message && <p className="text-center">{message}</p>}
             {contestants.length === 0 ? (
                 <p className="text-center">No contestants registered yet.</p>

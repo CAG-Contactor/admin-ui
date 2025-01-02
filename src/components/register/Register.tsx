@@ -4,7 +4,7 @@ import { registerContestant } from "../../api/BackendAPI";
 import { Form, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../index.css";
-import "./Register.css";
+import "../CommonStyles.css";
 
 interface RegisterProps {
     initialFormData?: FormData;
@@ -53,7 +53,7 @@ const Register: React.FC<RegisterProps> = ({ initialFormData = { name: "", email
 
     return (
         <div className="container">
-            <h1 className="text-center mb-4">Contestant Registration</h1>
+            <h1 className="text-center mb-4 title">Contestant Registration</h1>
             <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="name">
                     <Form.Label className="form-label">Name</Form.Label>
