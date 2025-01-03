@@ -6,16 +6,6 @@
       "src": "favicon-32x32.png",
       "type": "image/png",
       "sizes": "32x32"
-    },
-    {
-      "src": "favicon-167x167.png",
-      "type": "image/png",
-      "sizes": "167x167"
-    },
-    {
-      "src": "favicon-180x180.png",
-      "type": "image/png",
-      "sizes": "180x180"
     }
   ],
   "start_url": ".",
