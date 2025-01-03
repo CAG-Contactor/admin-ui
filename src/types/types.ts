@@ -1,43 +1,43 @@
-export type FormData = {
+export interface ContestantFormData {
     name: string;
     email: string;
-};
+}
 
-export type Errors = {
+export interface Errors {
     name?: string;
     email?: string;
-};
+}
 
-export type RegisterContestantResponse = {
+export interface RegisterContestantResponse {
     success: boolean;
-    contestant: FormData;
-};
+    contestant: ContestantFormData;
+}
 
-export type Contestant = {
+export interface Contestant {
     name: string;
     email: string;
-};
+}
 
-export type Result = {
+export interface Result {
     contestant: Contestant;
     timestamp: string;
-};
+}
 
-export type QueueItem = {
+export interface QueueItem {
     contestant: {
         name: string;
         email: string;
-    }
+    };
     timestamp: string;
-};
+}
 
-export type LeaderBoardItem = {
+export interface LeaderBoardItem {
     contestant: {
         name: string;
         email: string;
-    }
+    };
     result: {
         endTime: string;
         splitTime: string;
     };
-};
+}

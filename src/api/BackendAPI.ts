@@ -1,10 +1,10 @@
-import {FormData, LeaderBoardItem, QueueItem, RegisterContestantResponse} from "../types/types";
+import {ContestantFormData, LeaderBoardItem, QueueItem, RegisterContestantResponse} from "../types/types";
 import { Contestant } from "../types/types";
 
 const BASE_URL = "http://localhost:8080/api/v1";
 
 export const registerContestant = async (
-    data: FormData
+    data: ContestantFormData
 ): Promise<RegisterContestantResponse> => {
     console.log("Registering contestant " + JSON.stringify(data));
     const response = await fetch(`${BASE_URL}/contestants`, {

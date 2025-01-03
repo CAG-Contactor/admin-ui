@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Errors, FormData } from "../../types/types";
+import { Errors, ContestantFormData } from "../../types/types";
 import { registerContestant } from "../../api/BackendAPI";
 import { Form, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -7,11 +7,12 @@ import "../../index.css";
 import "../CommonStyles.css";
 
 interface RegisterProps {
-    initialFormData?: FormData;
+    addContestant: (formData: ContestantFormData) => void;
+    initialFormData?: ContestantFormData;
 }
 
-const Register: React.FC<RegisterProps> = ({ initialFormData = { name: "", email: "" } }) => {
-    const [formData, setFormData] = useState<FormData>(initialFormData);
+const Register: React.FC<RegisterProps> = ({ addContestant, initialFormData = { name: "", email: "" } }) => {
+    const [formData, setFormData] = useState<ContestantFormData>(initialFormData);
     const [errors, setErrors] = useState<Errors>({});
     const [message, setMessage] = useState<string>("");
 
@@ -37,6 +38,7 @@ const Register: React.FC<RegisterProps> = ({ initialFormData = { name: "", email
 
         try {
             await registerContestant(formData);
+            addContestant(formData);
             setMessage("Registration successful!");
             setFormData({ name: "", email: "" });
             setErrors({});
