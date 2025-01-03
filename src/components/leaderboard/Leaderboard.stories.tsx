@@ -1,7 +1,7 @@
 import React from "react";
-import { StoryFn, Meta } from "@storybook/react";
+import {StoryFn, Meta} from "@storybook/react";
 import Leaderboard from "./Leaderboard";
-import { LeaderBoardItem } from "../../types/types";
+import {LeaderBoardItem} from "../../types/types";
 
 export default {
     title: "Components/Leaderboard",
@@ -24,12 +24,23 @@ WithLeaderboardItems.args = {
                 email: "alice@example.com"
             },
             result: {
-                endTime: "2021-10-01T12:00:00Z",
+                endTime: "00:59:45",
                 splitTime: "00:30:00",
             },
 
         },
-        { contestant: { name: "Bob", email: "bob@example.com" } },
+        {
+            contestant:
+                {
+                    name: "Bob",
+                    email: "bob@example.com"
+                },
+            result:
+                {
+                    endTime: "00:45:45",
+                    splitTime: "00:25:00",
+            },
+        },
     ] as LeaderBoardItem[],
 };
 
