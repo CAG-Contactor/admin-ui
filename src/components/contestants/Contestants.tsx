@@ -2,48 +2,37 @@ import React, { useState } from "react";
 import { Contestant } from "../../types/types";
 import { ListGroup, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { enqueueContestant, deleteContestant } from "../../api/BackendAPI";
 import "../../index.css";
 import "../CommonStyles.css";
 
 interface ContestantsProps {
     initialContestants: Contestant[];
+    enqueueContestant: (contestant: Contestant) => void;
+    deleteContestant: (contestant: Contestant) => void;
 }
 
-export const Contestants: React.FC<ContestantsProps> = ({ initialContestants }) => {
-    const [contestants, setContestants] = useState<Contestant[]>(initialContestants);
+export const Contestants: React.FC<ContestantsProps> = ({ initialContestants, enqueueContestant, deleteContestant }) => {
     const [message, setMessage] = useState<string>("");
 
-    const handleEnqueueContestant = async (contestant: Contestant) => {
-        try {
-            await enqueueContestant(contestant);
-            setMessage(`${contestant.name} has been enqueued successfully!`);
-        } catch (err) {
-            console.error("Failed to enqueue contestant", err);
-            setMessage("Failed to enqueue contestant");
-        }
+    const handleEnqueueContestant = (contestant: Contestant) => {
+        enqueueContestant(contestant);
+        setMessage(`${contestant.name} has been enqueued successfully!`);
     };
 
     const handleDeleteContestant = async (contestant: Contestant) => {
-        try {
-            await deleteContestant(contestant);
-            setMessage(`${contestant.name} has been deleted successfully!`);
-            setContestants(contestants.filter(c => c !== contestant));
-        } catch (err) {
-            console.error("Failed to delete contestant", err);
-            setMessage("Failed to delete contestant");
-        }
+        deleteContestant(contestant);
+        setMessage(`${contestant.name} has been deleted successfully!`);
     };
 
     return (
         <div className="container list-group-container">
             <h1 className="text-center mb-4 title">Contestants</h1>
             {message && <p className="text-center">{message}</p>}
-            {contestants.length === 0 ? (
+            {initialContestants.length === 0 ? (
                 <p className="text-center">No contestants registered yet.</p>
             ) : (
                 <ListGroup className="list-group-container">
-                    {contestants.map((contestant, index) => (
+                    {initialContestants.map((contestant, index) => (
                         <ListGroup.Item key={index} className="d-flex justify-content-between align-items-center list-group-item">
                             <div>
                                 <strong>{contestant.name}</strong>

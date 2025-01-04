@@ -53,11 +53,31 @@ const App: React.FC = () => {
     }, []);
 
     const addContestant = (formData: ContestantFormData) => {
+        console.log("Adding contestant " + JSON.stringify(formData));
         const newContestant: Contestant = {
             name: formData.name,
             email: formData.email,
         };
         setContestants([...contestants, newContestant]);
+    };
+
+    const enqueueContestant = (contestant: Contestant) => {
+        console.log("Enqueue contestant - BACKEND CALL NOT IMPLEMENTED YET");
+        const newQueueItem: QueueItem = {
+            contestant,
+            timestamp: new Date().toISOString(),
+        };
+        setQueue([...queue, newQueueItem]);
+    };
+
+    const removeFromQueue = (queueItem: QueueItem) => {
+        console.log("Remove from queue - BACKEND CALL NOT IMPLEMENTED YET");
+        setQueue(queue.filter(item => item !== queueItem));
+    };
+
+    const deleteContestant = async (contestant: Contestant) => {
+        console.log("Deleting contestant " + JSON.stringify(contestant));
+        setContestants(contestants.filter(c => c !== contestant));
     };
 
     if (loading) {
@@ -74,8 +94,8 @@ const App: React.FC = () => {
                 <Route path="/" element={<MainLayout />}>
                     <Route index element={<Register addContestant={addContestant} />} />
                     <Route path="register" element={<Register addContestant={addContestant} />} />
-                    <Route path="contestants" element={<Contestants initialContestants={contestants} />} />
-                    <Route path="queue" element={<Queue initialQueue={queue} />} />
+                    <Route path="contestants" element={<Contestants initialContestants={contestants} enqueueContestant={enqueueContestant} deleteContestant={deleteContestant} />} />
+                    <Route path="queue" element={<Queue initialQueue={queue} removeFromQueue={removeFromQueue} />} />
                     <Route path="leaderboard" element={<Leaderboard initialLeaderboard={leaderboard} />} />
                 </Route>
             </Routes>

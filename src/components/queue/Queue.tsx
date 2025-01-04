@@ -7,9 +7,10 @@ import "../../index.css";
 
 interface QueueProps {
     initialQueue: QueueItem[];
+    removeFromQueue: (queueItem: QueueItem) => void;
 }
 
-const Queue: React.FC<QueueProps> = ({ initialQueue = [] }) => {
+const Queue: React.FC<QueueProps> = ({ initialQueue = [], removeFromQueue }) => {
     const [queue, setQueue] = useState<QueueItem[]>(initialQueue);
     const [message, setMessage] = useState<string>("");
 
@@ -17,9 +18,9 @@ const Queue: React.FC<QueueProps> = ({ initialQueue = [] }) => {
         // Implement start race logic here
         setMessage(`${queueItem.contestant.name} has started the race!`);
     };
-
+    
     const handleRemoveQueueItem = (queueItem: QueueItem) => {
-        setQueue(queue.filter(item => item !== queueItem));
+        removeFromQueue(queueItem);
         setMessage(`${queueItem.contestant.name} has been removed from the queue.`);
     };
 
