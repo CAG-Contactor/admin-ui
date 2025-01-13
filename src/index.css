@@ -1,0 +1,24 @@
+/* index.css */
+
+/* Root variables for colors */
+:root {
+    --primary-color: #8B4513; /* Brown */
+    --secondary-color-cream: #F5F5DC; /* Cream */
+    --secondary-color-olive: #808000; /* Olive Green */
+    --secondary-color-orange: #CC5500; /* Burnt Orange */
+    --secondary-color-red: #8B0000; /* Dark Red */
+}
+
+/* Global container styles */
+.container {
+    margin-top: 5rem;
+    padding: 2rem;
+    background-color: var(--secondary-color-cream);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Global text center styles */
+.text-center {
+    color: var(--primary-color);
+}

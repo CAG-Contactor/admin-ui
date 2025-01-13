@@ -1,44 +1,25 @@
 import React, { useState } from "react";
 import { Errors, ContestantFormData } from "../../types/types";
 import { registerContestant } from "../../api/BackendAPI";
+import { validateContestantForm } from "../../utils/validation";
 import { Form, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../index.css";
 import "../CommonStyles.css";
 
-interface RegisterProps {
-    addContestant: (formData: ContestantFormData) => void;
-    initialFormData?: ContestantFormData;
-}
-
-const Register: React.FC<RegisterProps> = ({ addContestant, initialFormData = { name: "", email: "" } }) => {
-    const [formData, setFormData] = useState<ContestantFormData>(initialFormData);
+const Register: React.FC = () => {
+    const [formData, setFormData] = useState<ContestantFormData>({ name: "", email: "" });
     const [errors, setErrors] = useState<Errors>({});
     const [message, setMessage] = useState<string>("");
 
-    const validate = (): boolean => {
-        const newErrors: Errors = {};
-        const nameRegex = /^[a-zA-Z\s]{1,50}$/;
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (!formData.name || !nameRegex.test(formData.name)) {
-            newErrors.name = "Invalid name.";
-        }
-        if (!formData.email || !emailRegex.test(formData.email)) {
-            newErrors.email = "Invalid email address.";
-        }
-
-        setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
-    };
-
     const handleSubmit = async (e: React.FormEvent): Promise<void> => {
         e.preventDefault();
-        if (!validate()) return;
+        const newErrors = validateContestantForm(formData);
+        setErrors(newErrors);
+        if (Object.keys(newErrors).length > 0) return;
 
         try {
             await registerContestant(formData);
-            addContestant(formData);
             setMessage("Registration successful!");
             setFormData({ name: "", email: "" });
             setErrors({});

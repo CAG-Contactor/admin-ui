@@ -1,11 +1,3 @@
-:root {
-    --primary-color: #8B4513; /* Brown */
-    --secondary-color-cream: #F5F5DC; /* Cream */
-    --secondary-color-olive: #808000; /* Olive Green */
-    --secondary-color-orange: #CC5500; /* Burnt Orange */
-    --secondary-color-red: #8B0000; /* Dark Red */
-}
-
 .layout-header {
     background-color: var(--primary-color); /* Use primary color for header background */
     color: var(--secondary-color-cream); /* Use cream for text contrast */

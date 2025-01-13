@@ -1,6 +1,6 @@
 import React from "react";
 import { StoryFn, Meta } from "@storybook/react";
-import Contestants from "./Contestants";
+import Contestants from "./Contestants"; // Import the Contestants component
 
 export default {
     title: "Components/Contestants",
@@ -10,15 +10,4 @@ export default {
 const Template: StoryFn<typeof Contestants> = (args) => <Contestants {...args} />;
 
 export const Empty = Template.bind({});
-Empty.args = {
-    initialContestants: [],
-};
 
-export const WithContestants = Template.bind({});
-WithContestants.args = {
-    initialContestants: [
-        { name: "John Doe", email: "john.doe@example.com" },
-        { name: "Jane Smith", email: "jane.smith@example.com" },
-        { name: "Alice Johnson", email: "alice.johnson@example.com" },
-    ],
-};

@@ -1,38 +1,64 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Contestant } from "../../types/types";
+import { fetchContestants, deleteContestant as deleteContestantAPI } from "../../api/BackendAPI";
 import { ListGroup, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../index.css";
 import "../CommonStyles.css";
 
-interface ContestantsProps {
-    initialContestants: Contestant[];
-    enqueueContestant: (contestant: Contestant) => void;
-    deleteContestant: (contestant: Contestant) => void;
-}
+interface ContestantsProps {}
 
-export const Contestants: React.FC<ContestantsProps> = ({ initialContestants, enqueueContestant, deleteContestant }) => {
+export const Contestants: React.FC<ContestantsProps> = () => {
+    const [contestants, setContestants] = useState<Contestant[]>([]);
     const [message, setMessage] = useState<string>("");
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
 
-    const handleEnqueueContestant = (contestant: Contestant) => {
-        enqueueContestant(contestant);
-        setMessage(`${contestant.name} has been enqueued successfully!`);
-    };
+    useEffect(() => {
+        const loadContestants = async () => {
+            try {
+                const data = await fetchContestants();
+                setContestants(data || []);
+            } catch (err) {
+                console.error("Failed to load contestants", err);
+                setError("Failed to load contestants");
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        loadContestants();
+    }, []);
 
     const handleDeleteContestant = async (contestant: Contestant) => {
-        deleteContestant(contestant);
-        setMessage(`${contestant.name} has been deleted successfully!`);
+        console.log("Contestants.tsx: Deleting contestant " + JSON.stringify(contestant));
+        try {
+            await deleteContestantAPI(contestant);
+            setContestants(contestants.filter(c => c !== contestant));
+            setMessage(`${contestant.name} has been deleted successfully!`);
+        } catch (err) {
+            console.error("Failed to delete contestant", err);
+            setError("Failed to delete contestant");
+        }
     };
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>{error}</div>;
+    }
 
     return (
         <div className="container list-group-container">
             <h1 className="text-center mb-4 title">Contestants</h1>
             {message && <p className="text-center">{message}</p>}
-            {initialContestants.length === 0 ? (
+            {contestants.length === 0 ? (
                 <p className="text-center">No contestants registered yet.</p>
             ) : (
                 <ListGroup className="list-group-container">
-                    {initialContestants.map((contestant, index) => (
+                    {contestants.map((contestant, index) => (
                         <ListGroup.Item key={index} className="d-flex justify-content-between align-items-center list-group-item">
                             <div>
                                 <strong>{contestant.name}</strong>
@@ -41,9 +67,6 @@ export const Contestants: React.FC<ContestantsProps> = ({ initialContestants, en
                                 <br/>
                             </div>
                             <div className="button-container">
-                                <Button variant="primary" className="btn-submit me-2" onClick={() => handleEnqueueContestant(contestant)}>
-                                    Enqueue
-                                </Button>
                                 <Button type="button" className="btn-clear" onClick={() => handleDeleteContestant(contestant)}>
                                     Delete
                                 </Button>

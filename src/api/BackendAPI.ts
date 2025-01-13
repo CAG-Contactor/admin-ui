@@ -20,31 +20,6 @@ export const registerContestant = async (
     return response.json();
 };
 
-export const enqueueContestant = async (contestant: Contestant): Promise<void> => {
-    console.log("Enqueuing contestant " + JSON.stringify(contestant));
-    const response = await fetch(`${BASE_URL}/enqueueContestant`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(contestant),
-    });
-
-    if (!response.ok) {
-        throw new Error("Failed to enqueue contestant");
-    }
-};
-
-export const deleteContestant = async (contestant: Contestant): Promise<void> => {
-    console.log("Deleting contestant " + JSON.stringify(contestant));
-    // const response = await fetch(`${BASE_URL}/contestants/${contestant}`, {
-    //     method: "DELETE",
-    //     headers: { "Content-Type": "application/json" },
-    // });
-    //
-    // if (!response.ok) {
-    //     throw new Error("Failed to delete contestant");
-    // }
-};
-
 export const fetchContestants = async (): Promise<Contestant[]> => {
     console.log("Fetching contestants from " +  BASE_URL + "/contestants");
     const response = await fetch(`${BASE_URL}/contestants`, {
@@ -59,6 +34,19 @@ export const fetchContestants = async (): Promise<Contestant[]> => {
     return response.json();
 };
 
+export const deleteContestant = async (contestant: Contestant): Promise<void> => {
+    console.log("BackendAPI.tsx: Deleting contestant " + JSON.stringify(contestant));
+    const response = await fetch(`${BASE_URL}/contestants/${encodeURIComponent(contestant.email)}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to delete contestant");
+    }
+};
+
+
 export const fetchQueue = async (): Promise<QueueItem[]> => {
     console.log("Fetching queue from " +  BASE_URL + "/queue");
     const response = await fetch(`${BASE_URL}/queue`, {
@@ -71,6 +59,30 @@ export const fetchQueue = async (): Promise<QueueItem[]> => {
     }
 
     return response.json();
+};
+
+export const removeQueueItem = async (timestamp: string): Promise<void> => {
+    console.log("Removing queue item with timestamp " + timestamp);
+    const response = await fetch(`${BASE_URL}/queue/${timestamp}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to remove queue item");
+    }
+};
+
+export const startRace = async (timestamp: string): Promise<void> => {
+    console.log("Starting race with timestamp " + timestamp);
+    const response = await fetch(`${BASE_URL}/game-start?timestamp=${timestamp}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to start race");
+    }
 };
 
 export const fetchLeaderBoard = async (): Promise<LeaderBoardItem[]> => {

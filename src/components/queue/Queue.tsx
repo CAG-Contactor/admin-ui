@@ -1,28 +1,63 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ListGroup, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { QueueItem } from "../../types/types";
+import { fetchQueue, removeQueueItem as removeQueueItemAPI, startRace } from "../../api/BackendAPI";
 import "../CommonStyles.css";
 import "../../index.css";
 
-interface QueueProps {
-    initialQueue: QueueItem[];
-    removeFromQueue: (queueItem: QueueItem) => void;
-}
+interface QueueProps {}
 
-const Queue: React.FC<QueueProps> = ({ initialQueue = [], removeFromQueue }) => {
-    const [queue, setQueue] = useState<QueueItem[]>(initialQueue);
+const Queue: React.FC<QueueProps> = () => {
+    const [queue, setQueue] = useState<QueueItem[]>([]);
     const [message, setMessage] = useState<string>("");
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
 
-    const handleStartRace = (queueItem: QueueItem) => {
-        // Implement start race logic here
-        setMessage(`${queueItem.contestant.name} has started the race!`);
+    useEffect(() => {
+        const loadQueue = async () => {
+            try {
+                const data = await fetchQueue();
+                setQueue(data || []);
+            } catch (err) {
+                console.error("Failed to load queue", err);
+                setError("Failed to load queue");
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        loadQueue();
+    }, []);
+
+    const handleStartRace = async (queueItem: QueueItem) => {
+        try {
+            await startRace(queueItem.timestamp);
+            setMessage(`${queueItem.contestant.name} has started the race!`);
+        } catch (err) {
+            console.error("Failed to start race", err);
+            setMessage("Failed to start race");
+        }
     };
-    
-    const handleRemoveQueueItem = (queueItem: QueueItem) => {
-        removeFromQueue(queueItem);
-        setMessage(`${queueItem.contestant.name} has been removed from the queue.`);
+
+    const handleRemoveQueueItem = async (queueItem: QueueItem) => {
+        try {
+            await removeQueueItemAPI(queueItem.timestamp);
+            setQueue(queue.filter(item => item !== queueItem));
+            setMessage(`${queueItem.contestant.name} has been removed from the queue.`);
+        } catch (err) {
+            console.error("Failed to remove queue item", err);
+            setMessage("Failed to remove queue item");
+        }
     };
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>{error}</div>;
+    }
 
     return (
         <div className="container queue-container">
