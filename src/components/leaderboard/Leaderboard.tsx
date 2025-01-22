@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { LeaderBoardItem } from "../../types/types";
 import { fetchLeaderBoard } from "../../api/BackendAPI";
 import "../CommonStyles.css";
+import "./Leaderboard.css";
 
 const Leaderboard: React.FC = () => {
     const [leaderboard, setLeaderboard] = useState<LeaderBoardItem[]>([]);
@@ -42,15 +43,15 @@ const Leaderboard: React.FC = () => {
             ) : (
                 <ListGroup>
                     <ListGroup.Item className="d-flex justify-content-between align-items-center list-group-item">
-                        <div className="text-center flex-fill">Name</div>
-                        <div className="text-center flex-fill">Split Time</div>
-                        <div className="text-center flex-fill">End Time</div>
+                        <div className="column">Name</div>
+                        <div className="column">Split Time</div>
+                        <div className="column">End Time</div>
                     </ListGroup.Item>
                     {leaderboard.map((leaderBoardItem, index) => (
                         <ListGroup.Item key={index} className="d-flex justify-content-between align-items-center list-group-item">
-                            <div className="flex-fill">{leaderBoardItem.contestant.name}</div>
-                            <div className="flex-fill text-center">{leaderBoardItem.result?.splitTime || "N/A"}</div>
-                            <div className="flex-fill text-center">{leaderBoardItem.result?.endTime || "N/A"}</div>
+                            <div className="column">{leaderBoardItem.contestant.email}</div>
+                            <div className="column">{leaderBoardItem.result?.splitTime || "N/A"}</div>
+                            <div className="column">{leaderBoardItem.result?.endTime || "N/A"}</div>
                         </ListGroup.Item>
                     ))}
                 </ListGroup>

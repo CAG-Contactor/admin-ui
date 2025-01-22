@@ -1,6 +1,15 @@
+/* src/components/layout/MainLayout.css */
+
+.layout {
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+}
+
 .layout-header {
-    background-color: var(--primary-color); /* Use primary color for header background */
-    color: var(--secondary-color-cream); /* Use cream for text contrast */
+    background-color: var(--secondary-color-cream); /* Use cream for header background */
+    color: var(--primary-color); /* Use primary color for text contrast */
     padding: 10px;
 }
 
@@ -17,7 +26,7 @@
 }
 
 .layout-nav ul li a {
-    color: var(--secondary-color-cream); /* Use cream for links */
+    color: var(--primary-color); /* Use primary color for links */
     text-decoration: none;
     font-size: 18px;
 }
@@ -29,7 +38,7 @@
 
 .layout-content {
     padding: 20px;
-    background-color: var(--secondary-color-cream); /* Use cream for content background */
+    background-color: var(--background-color); /* Use light grey for content background */
     color: var(--primary-color); /* Use primary color for text */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

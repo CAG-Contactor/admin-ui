@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ListGroup, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { QueueItem } from "../../types/types";
-import { fetchQueue, removeQueueItem as removeQueueItemAPI, startRace } from "../../api/BackendAPI";
+import { fetchQueue, removeQueueItem as removeQueueItemAPI, startRace, abortRace } from "../../api/BackendAPI";
 import "../CommonStyles.css";
 import "../../index.css";
 
@@ -13,6 +13,7 @@ const Queue: React.FC<QueueProps> = () => {
     const [message, setMessage] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+    const [raceStarted, setRaceStarted] = useState<boolean>(false);
 
     useEffect(() => {
         const loadQueue = async () => {
@@ -33,7 +34,9 @@ const Queue: React.FC<QueueProps> = () => {
     const handleStartRace = async (queueItem: QueueItem) => {
         try {
             await startRace(queueItem.timestamp);
+            setQueue(queue.filter(item => item !== queueItem));
             setMessage(`${queueItem.contestant.name} has started the race!`);
+            setRaceStarted(true);
         } catch (err) {
             console.error("Failed to start race", err);
             setMessage("Failed to start race");
@@ -51,6 +54,17 @@ const Queue: React.FC<QueueProps> = () => {
         }
     };
 
+    const handleAbortRace = async () => {
+        try {
+            await abortRace();
+            setMessage("Race has been aborted.");
+            setRaceStarted(false);
+        } catch (err) {
+            console.error("Failed to abort race", err);
+            setMessage("Failed to abort race");
+        }
+    };
+
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -63,6 +77,13 @@ const Queue: React.FC<QueueProps> = () => {
         <div className="container queue-container">
             <h1 className="text-center mb-4 title">Contestant Queue</h1>
             {message && <p className="text-center">{message}</p>}
+            {raceStarted && (
+                <div className="text-center mb-4">
+                    <Button className="btn-abort" onClick={handleAbortRace}>
+                        Abort game
+                    </Button>
+                </div>
+            )}
             {queue.length === 0 ? (
                 <p className="text-center">No contestants in queue.</p>
             ) : (

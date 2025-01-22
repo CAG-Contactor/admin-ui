@@ -2,23 +2,80 @@
 
 /* Root variables for colors */
 :root {
-    --primary-color: #8B4513; /* Brown */
-    --secondary-color-cream: #F5F5DC; /* Cream */
-    --secondary-color-olive: #808000; /* Olive Green */
-    --secondary-color-orange: #CC5500; /* Burnt Orange */
-    --secondary-color-red: #8B0000; /* Dark Red */
+    --primary-color: #2C3E50; /* Dark Blue */
+    --secondary-color: #18BC9C; /* Green */
+    --accent-color: #3498DB; /* Light Blue */
+    --background-color: #ECF0F1; /* Light Grey */
+    --highlight-color: #E74C3C; /* Red */
 }
 
 /* Global container styles */
 .container {
-    margin-top: 5rem;
+    margin: 0;
     padding: 2rem;
-    background-color: var(--secondary-color-cream);
+    background-color: var(--background-color);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 /* Global text center styles */
 .text-center {
     color: var(--primary-color);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, #2C3E50, #3498DB); /* Dark Blue to Light Blue */
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Helvetica', sans-serif;
+    color: var(--secondary-color);
+}
+
+.background {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.background::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 10%, transparent 70%);
+    animation: waves 15s linear infinite;
+    opacity: 0.4;
+}
+
+.background::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 15%, transparent 80%);
+    animation: waves 20s linear infinite reverse;
+    opacity: 0.6;
+}
+
+@keyframes waves {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

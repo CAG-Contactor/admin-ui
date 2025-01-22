@@ -28,6 +28,11 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
+.list-group-container {
+    max-height: 600px; /* Justera höjden efter behov */
+    overflow-y: auto;
+}
+
 /* Button styles */
 
 .button-container {
@@ -56,3 +61,15 @@
     background-color: var(--primary-color) !important;
     border-color: var(--primary-color) !important;
 }
+
+.btn-abort {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: var(--background-color) !important;
+}
+
+.btn-abort:hover {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+}
+

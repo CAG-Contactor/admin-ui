@@ -98,3 +98,15 @@ export const fetchLeaderBoard = async (): Promise<LeaderBoardItem[]> => {
 
     return response.json();
 };
+
+export const abortRace = async (): Promise<void> => {
+    console.log("Aborting race");
+    const response = await fetch(`${BASE_URL}/game-abort`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to abort race");
+    }
+};

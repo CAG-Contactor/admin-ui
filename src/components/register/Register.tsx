@@ -1,3 +1,5 @@
+// src/components/register/Register.tsx
+
 import React, { useState } from "react";
 import { Errors, ContestantFormData } from "../../types/types";
 import { registerContestant } from "../../api/BackendAPI";
@@ -6,6 +8,7 @@ import { Form, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../index.css";
 import "../CommonStyles.css";
+import "./Register.css";
 
 const Register: React.FC = () => {
     const [formData, setFormData] = useState<ContestantFormData>({ name: "", email: "" });
@@ -35,7 +38,7 @@ const Register: React.FC = () => {
     };
 
     return (
-        <div className="container">
+        <div className="container register-container">
             <h1 className="text-center mb-4 title">Contestant Registration</h1>
             <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="name">

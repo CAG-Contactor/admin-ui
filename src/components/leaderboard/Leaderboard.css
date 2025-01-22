@@ -1,0 +1,6 @@
+/* src/components/leaderboard/Leaderboard.css */
+
+.column {
+    flex: 1;
+    text-align: center;
+}
