@@ -1,5 +1,12 @@
 /* src/components/leaderboard/Leaderboard.css */
 
+.header-row {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    font-weight: bold;
+    border: none;
+}
+
 .column {
     flex: 1;
     text-align: center;

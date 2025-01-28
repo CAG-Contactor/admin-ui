@@ -37,12 +37,12 @@ const Leaderboard: React.FC = () => {
 
     return (
         <div className="container leaderboard-container">
-            <h1 className="text-center mb-4 title">Leaderboard</h1>
+            <h1 className="text-center mb-4 subtitle">Leaderboard</h1>
             {leaderboard.length === 0 ? (
                 <p className="text-center">No results available.</p>
             ) : (
                 <ListGroup>
-                    <ListGroup.Item className="d-flex justify-content-between align-items-center list-group-item">
+                    <ListGroup.Item className="d-flex justify-content-between align-items-center list-group-item header-row">
                         <div className="column">Name</div>
                         <div className="column">Split Time</div>
                         <div className="column">End Time</div>

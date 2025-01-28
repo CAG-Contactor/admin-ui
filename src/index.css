@@ -1,81 +1,93 @@
-/* index.css */
+/*
 
-/* Root variables for colors */
+1. The main/primary color → used for the links, the button background color, etc. In general,
+it’s the main call-to-action color.
+
+2. The accent color → used to highlight something important on the page. It shouldn’t be a variation of the primary
+color, but a complementary color.
+
+3. A scale of neutral colors → It’s generally a scale of grayscale tones, to be used for text elements, subtle elements, borders, etc.
+
+4. Feedback colors → success, error, warning.
+*/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
 :root {
-    --primary-color: #2C3E50; /* Dark Blue */
-    --secondary-color: #18BC9C; /* Green */
-    --accent-color: #3498DB; /* Light Blue */
-    --background-color: #ECF0F1; /* Light Grey */
-    --highlight-color: #E74C3C; /* Red */
+    --primary-color: #f0ebd8; /* Soft beige as the main color */
+    --secondary-color: #8BAAAD; /* Soft green-blue for subtle accents */
+    --background-color: #68c7df; /* Light gray-blue background for softness */
+    --highlight-color: #D1B490; /* Sand-colored tone for attention */
+    --on-highlight-color: #000000; /* Black color for text on highlight */
+    --highlight-accent-color: #6A8D92; /* Sand-colored tone for attention */
+    --header-background: #68c7df; /* Dark muted blue-gray for the header */
+    --card-background: #f0ecd8; /* White for cards and sections */
+    --shadow-color: rgba(0, 0, 0, 0.05); /* Very soft shadow */
 }
+
 
 /* Global container styles */
 .container {
-    margin: 0;
+    margin: 0 auto;
     padding: 2rem;
+    max-width: 960px;
     background-color: var(--background-color);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    height: 100%;
     box-sizing: border-box;
 }
 
-/* Global text center styles */
-.text-center {
-    color: var(--primary-color);
-}
-
+/* Body styles */
 body {
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    background: linear-gradient(135deg, #2C3E50, #3498DB); /* Dark Blue to Light Blue */
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Helvetica', sans-serif;
-    color: var(--secondary-color);
+    font-family: 'Georgia', serif;
+    background-color: var(--background-color);
+    line-height: 1.6;
 }
 
-.background {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+/* Header styles */
+header {
+    background-color: var(--header-background);
+    color: var(--primary-color);
+    padding: 1rem 0;
+    text-align: center;
+    border-bottom: 2px solid var(--primary-color);
 }
 
-.background::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 10%, transparent 70%);
-    animation: waves 15s linear infinite;
-    opacity: 0.4;
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
 }
 
-.background::after {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 15%, transparent 80%);
-    animation: waves 20s linear infinite reverse;
-    opacity: 0.6;
+header p {
+    margin: 0;
+    font-size: 1.2rem;
 }
 
-@keyframes waves {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Navigation styles */
+nav {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: var(--highlight-color);
 }

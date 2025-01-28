@@ -1,5 +1,11 @@
 .register-container {
-    max-width: 500px; /* Adjust the width as needed */
-    padding: 20px; /* Adjust the padding as needed */
-    margin: 0 auto; /* Center the container */
+    max-width: 500px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+/* src/components/register/Register.css */
+
+.form-label {
+    color: var(--primary-color);
 }

@@ -1,6 +1,4 @@
-// src/components/register/Register.tsx
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Errors, ContestantFormData } from "../../types/types";
 import { registerContestant } from "../../api/BackendAPI";
 import { validateContestantForm } from "../../utils/validation";
@@ -14,6 +12,13 @@ const Register: React.FC = () => {
     const [formData, setFormData] = useState<ContestantFormData>({ name: "", email: "" });
     const [errors, setErrors] = useState<Errors>({});
     const [message, setMessage] = useState<string>("");
+
+    useEffect(() => {
+        if (message) {
+            const timer = setTimeout(() => setMessage(""), 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [message]);
 
     const handleSubmit = async (e: React.FormEvent): Promise<void> => {
         e.preventDefault();
@@ -39,7 +44,7 @@ const Register: React.FC = () => {
 
     return (
         <div className="container register-container">
-            <h1 className="text-center mb-4 title">Contestant Registration</h1>
+            <h1 className="text-center mb-4 subtitle">Register</h1>
             <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="name">
                     <Form.Label className="form-label">Name</Form.Label>
@@ -75,12 +80,12 @@ const Register: React.FC = () => {
                     <Button type="submit" className="btn-submit">
                         Submit
                     </Button>
-                    <Button type="button" onClick={handleClear} className="btn-clear" variant="light">
+                    <Button type="button" onClick={handleClear} className="btn-clear">
                         Clear
                     </Button>
                 </div>
             </Form>
-            {message && <p className="text-center mt-4">{message}</p>}
+            {message && <p className="message">{message}</p>}
         </div>
     );
 };

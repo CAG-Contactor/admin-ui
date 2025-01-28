@@ -30,6 +30,13 @@ export const Contestants: React.FC<ContestantsProps> = () => {
         loadContestants();
     }, []);
 
+    useEffect(() => {
+        if (message) {
+            const timer = setTimeout(() => setMessage(""), 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [message]);
+
     const handleDeleteContestant = async (contestant: Contestant) => {
         console.log("Contestants.tsx: Deleting contestant " + JSON.stringify(contestant));
         try {
@@ -52,12 +59,12 @@ export const Contestants: React.FC<ContestantsProps> = () => {
 
     return (
         <div className="container list-group-container">
-            <h1 className="text-center mb-4 title">Contestants</h1>
-            {message && <p className="text-center">{message}</p>}
+            <h1 className="text-center mb-4 subtitle">Contestants</h1>
+            {message && <p className="text-center message">{message}</p>}
             {contestants.length === 0 ? (
                 <p className="text-center">No contestants registered yet.</p>
             ) : (
-                <ListGroup className="list-group-container">
+                <ListGroup>
                     {contestants.map((contestant, index) => (
                         <ListGroup.Item key={index} className="d-flex justify-content-between align-items-center list-group-item">
                             <div>

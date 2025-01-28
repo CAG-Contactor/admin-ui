@@ -1,16 +1,16 @@
-/* src/components/layout/MainLayout.css */
-
-.layout {
-    width: 100vw; /* Full viewport width */
-    height: 100vh; /* Full viewport height */
-    display: flex;
-    flex-direction: column;
+.layout-header {
+    background-color: var(--header-background);
+    color: var(--primary-color);
+    padding: 10px;
 }
 
-.layout-header {
-    background-color: var(--secondary-color-cream); /* Use cream for header background */
-    color: var(--primary-color); /* Use primary color for text contrast */
-    padding: 10px;
+
+.layout {
+    width: 100vw;
+    height: 200vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
 }
 
 .layout-nav ul {
@@ -26,20 +26,24 @@
 }
 
 .layout-nav ul li a {
-    color: var(--primary-color); /* Use primary color for links */
     text-decoration: none;
     font-size: 18px;
+    color: var(--primary-color);
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px  1px 0 #000,
+            1px  1px 0 #000;
 }
 
-.layout-nav ul li a:hover {
-    text-decoration: underline;
-    color: var(--secondary-color-orange); /* Use burnt orange for hover effect */
-}
-
-.layout-content {
-    padding: 20px;
-    background-color: var(--background-color); /* Use light grey for content background */
-    color: var(--primary-color); /* Use primary color for text */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.subtitle {
+    color: var(--highlight-color);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 4rem;
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px  1px 0 #000,
+            1px  1px 0 #000;
 }

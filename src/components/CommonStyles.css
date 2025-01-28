@@ -1,12 +1,11 @@
 @import './layout/MainLayout.css';
 
-.title {
-    color: var(--primary-color);
-    text-align: center;
-    margin-bottom: 1.5rem;
-}
-
 /* List group styles */
+
+.list-group-container {
+    flex-grow: 1;
+    overflow-y: auto;
+}
 
 .list-group-item {
     background-color: var(--secondary-color-cream);
@@ -28,11 +27,6 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-.list-group-container {
-    max-height: 600px; /* Justera höjden efter behov */
-    overflow-y: auto;
-}
-
 /* Button styles */
 
 .button-container {
@@ -41,35 +35,51 @@
 }
 
 .btn-submit {
-    background-color: var(--secondary-color-orange) !important;
-    border-color: var(--secondary-color-orange) !important;
-    color: var(--secondary-color-cream) !important;
+    background-color: var(--highlight-color);
+    border-color: var(--secondary-color);
+    color: var(--on-highlight-color);
+    box-shadow: 0 4px 6px var(--shadow-color);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn-submit:hover {
-    background-color: var(--secondary-color-red) !important;
-    border-color: var(--secondary-color-red) !important;
+    background-color: var(--highlight-color);
+    color: var(--on-highlight-color);
+    box-shadow: 0 6px 8px var(--shadow-color);
 }
 
 .btn-clear {
-    background-color: var(--secondary-color-red) !important;
-    border-color: var(--secondary-color-red) !important;
-    color: var(--secondary-color-cream) !important;
+    background-color: var(--highlight-color);
+    border-color: var(--highlight-color);
+    color: var(--on-highlight-color);
+    box-shadow: 0 4px 6px var(--shadow-color);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn-clear:hover {
-    background-color: var(--primary-color) !important;
-    border-color: var(--primary-color) !important;
+    background-color: var(--highlight-color);
+    color: var(--on-highlight-color);
+    box-shadow: 0 6px 8px var(--shadow-color);
 }
 
 .btn-abort {
-    background-color: var(--primary-color) !important;
-    border-color: var(--primary-color) !important;
-    color: var(--background-color) !important;
+    background-color: var(--highlight-color);
+    border-color: var(--highlight-color);
+    color: var(--on-highlight-color);
+    box-shadow: 0 4px 6px var(--shadow-color);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn-abort:hover {
-    background-color: var(--secondary-color) !important;
-    border-color: var(--secondary-color) !important;
+    background-color: var(--highlight-color);
+    color: var(--on-highlight-color);
+    box-shadow: 0 6px 8px var(--shadow-color);
+}
+
+.message {
+    color: var(--primary-color);
+    font-weight: bold;
+    text-align: center;
+    margin-top: 1rem;
 }
 

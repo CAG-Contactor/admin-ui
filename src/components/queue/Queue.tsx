@@ -31,6 +31,13 @@ const Queue: React.FC<QueueProps> = () => {
         loadQueue();
     }, []);
 
+    useEffect(() => {
+        if (message) {
+            const timer = setTimeout(() => setMessage(""), 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [message]);
+
     const handleStartRace = async (queueItem: QueueItem) => {
         try {
             await startRace(queueItem.timestamp);
@@ -75,8 +82,8 @@ const Queue: React.FC<QueueProps> = () => {
 
     return (
         <div className="container queue-container">
-            <h1 className="text-center mb-4 title">Contestant Queue</h1>
-            {message && <p className="text-center">{message}</p>}
+            <h1 className="text-center mb-4 subtitle">Queue</h1>
+            {message && <p className="text-center message">{message}</p>}
             {raceStarted && (
                 <div className="text-center mb-4">
                     <Button className="btn-abort" onClick={handleAbortRace}>
@@ -85,7 +92,7 @@ const Queue: React.FC<QueueProps> = () => {
                 </div>
             )}
             {queue.length === 0 ? (
-                <p className="text-center">No contestants in queue.</p>
+                <p className="text-center message">No contestants in queue.</p>
             ) : (
                 <ListGroup>
                     {queue.map((queueItem, index) => (
