@@ -1,8 +1,9 @@
 .layout-header {
-    background-color: var(--header-background);
-    color: var(--primary-color);
+    max-width: 1200px;
+    width: 100%;
+    background-color: var(--white);
     padding: 10px;
-    margin-bottom: 20px;
+    margin: 0 auto 20px;
 }
 
 .layout {
@@ -10,7 +11,7 @@
     height: 200vh;
     display: flex;
     flex-direction: column;
-    background-color: var(--background-color);
+    background-color: var(--white);
 }
 
 .layout-nav ul {
@@ -28,13 +29,13 @@
 .layout-nav ul li a {
     text-decoration: none;
     font-size: 1.5rem;
-    color: var(--on-highlight-color);
+    color: var(--black);
 }
 
 .layout-nav ul li a.active {
     font-weight: bold;
-    color: var(--on-highlight-color);
-    border-bottom: 2px solid var(--highlight-color);
+    color: var(--black);
+    border-bottom: 2px solid var(--white);
     padding: 5px 10px;
     border-radius: 5px;
 }

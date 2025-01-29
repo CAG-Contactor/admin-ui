@@ -1,11 +1,8 @@
 :root {
-    --primary-color: #f0ebd8; /* Soft beige as the main color */
-    --secondary-color: #8BAAAD; /* Soft green-blue for subtle accents */
-    --background-color: #ffffff; /* Light gray-blue background for softness */
-    --highlight-color: #ffffff; /* Sand-colored tone for attention */
-    --on-highlight-color: #000000; /* Black color for text on highlight */
+    --white: #ffffff; /* Light gray-blue background for softness */
+    --black: #000000; /* Black color for text on highlight */
+    --soft-gray: #e0e0e0; /* Soft green-blue for subtle accents */
     --highlight-accent-color: #6A8D92; /* Sand-colored tone for attention */
-    --header-background: #ffffff; /* Dark muted blue-gray for the header */
     --shadow-color: rgba(0, 0, 0, 0.05); /* Very soft shadow */
 }
 
@@ -15,7 +12,7 @@
     margin: 0 auto;
     padding: 2rem;
     max-width: 960px;
-    background-color: var(--background-color);
+    background-color: var(--white);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
@@ -31,11 +28,9 @@ body {
 
 /* Header styles */
 header {
-    background-color: var(--header-background);
-    color: var(--primary-color);
+    background-color: var(--white);
     padding: 1rem 0;
     text-align: center;
-    border-bottom: 2px solid var(--primary-color);
 }
 
 header h1 {
@@ -69,5 +64,5 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: var(--on-highlight-color);
+    color: var(--black);
 }

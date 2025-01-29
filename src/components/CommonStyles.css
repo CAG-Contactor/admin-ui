@@ -6,11 +6,11 @@
     overflow-y: auto;
     max-width: 800px;
     margin: 0 auto;
-    border: 1px solid var(--secondary-color);
+    border: 1px solid var(--soft-gray);
 }
 
 .list-group-item {
-    color: var(--on-highlight-color);
+    color: var(--black);
     padding: 0.5rem 0.8rem;
     border-radius: 8px;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
@@ -29,9 +29,9 @@
 }
 
 .btn-submit, .btn-clear, .btn-abort {
-    background-color: var(--highlight-color);
-    border-color: var(--secondary-color);
-    color: var(--on-highlight-color);
+    background-color: var(--white);
+    border-color: var(--soft-gray);
+    color: var(--black);
     box-shadow: 0 4px 6px var(--shadow-color);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     padding: 0.3rem 0.6rem;
@@ -39,41 +39,41 @@
 }
 
 .btn-submit:hover, .btn-clear:hover, .btn-abort:hover {
-    background-color: var(--highlight-color);
-    color: var(--on-highlight-color);
+    background-color: var(--white);
+    color: var(--black);
     box-shadow: 0 6px 8px var(--shadow-color);
 }
 
 .btn-clear {
-    background-color: var(--highlight-color);
-    border-color: var(--secondary-color);
-    color: var(--on-highlight-color);
+    background-color: var(--white);
+    border-color: var(--soft-gray);
+    color: var(--black);
     box-shadow: 0 4px 6px var(--shadow-color);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn-clear:hover {
-    background-color: var(--highlight-color);
-    color: var(--on-highlight-color);
+    background-color: var(--white);
+    color: var(--black);
     box-shadow: 0 6px 8px var(--shadow-color);
 }
 
 .btn-abort {
-    background-color: var(--highlight-color);
-    border-color: var(--highlight-color);
-    color: var(--on-highlight-color);
+    background-color: var(--white);
+    border-color: var(--white);
+    color: var(--black);
     box-shadow: 0 4px 6px var(--shadow-color);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn-abort:hover {
-    background-color: var(--highlight-color);
-    color: var(--on-highlight-color);
+    background-color: var(--white);
+    color: var(--black);
     box-shadow: 0 6px 8px var(--shadow-color);
 }
 
 .message {
-    color: var(--on-highlight-color);
+    color: var(--black);
     text-align: center;
     margin-top: 1rem;
 }
