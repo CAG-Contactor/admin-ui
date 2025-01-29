@@ -26,6 +26,7 @@ Visar alla tävlande som står i kö för att tävla.
 Här finns även möjlighet att:
 - ta bort en användare från kön
 - starta tävlingen för valfri användare (användaren tas då bort från kön)
+- avbryta pågående tävling
 
 ### Leaderboard - Resultat
 Resultatsida visar endast en tid per tävlande. Om en tävlande har tävlat flera gånger visas endast den snabbaste tiden.
