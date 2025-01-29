@@ -81,7 +81,7 @@ const Queue: React.FC<QueueProps> = () => {
     }
 
     return (
-        <div className="container queue-container">
+        <div className="container list-group-container">
             {message && <p className="text-center message">{message}</p>}
             {raceStarted && (
                 <div className="text-center mb-4">

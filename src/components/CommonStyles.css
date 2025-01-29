@@ -2,9 +2,13 @@
 
 /* List group styles */
 
+/* src/components/CommonStyles.css */
+
 .list-group-container {
     flex-grow: 1;
     overflow-y: auto;
+    max-width: 800px; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the list group */
 }
 
 .list-group-item {

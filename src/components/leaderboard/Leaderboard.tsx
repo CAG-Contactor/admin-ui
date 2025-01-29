@@ -36,7 +36,7 @@ const Leaderboard: React.FC = () => {
     }
 
     return (
-        <div className="container leaderboard-container">
+        <div className="container list-group-container">
             {leaderboard.length === 0 ? (
                 <p className="text-center">No results available.</p>
             ) : (
