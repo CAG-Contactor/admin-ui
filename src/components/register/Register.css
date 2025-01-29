@@ -2,4 +2,7 @@
     max-width: 500px;
     padding: 20px;
     margin: 0 auto;
+    border: 1px solid var(--secondary-color); /* Add border */
+    border-radius: 8px; /* Add border radius */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Add box shadow */
 }
