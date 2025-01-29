@@ -82,7 +82,6 @@ const Queue: React.FC<QueueProps> = () => {
 
     return (
         <div className="container queue-container">
-            <h1 className="text-center mb-4 subtitle">Queue</h1>
             {message && <p className="text-center message">{message}</p>}
             {raceStarted && (
                 <div className="text-center mb-4">
@@ -98,7 +97,7 @@ const Queue: React.FC<QueueProps> = () => {
                     {queue.map((queueItem, index) => (
                         <ListGroup.Item key={index} className="d-flex justify-content-between align-items-center queue-item">
                             <div>
-                                <strong>{queueItem.contestant.name}</strong>
+                                {queueItem.contestant.name}
                                 <br />
                                 <span>{queueItem.contestant.email}</span>
                                 <br />

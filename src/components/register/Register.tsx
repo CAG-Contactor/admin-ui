@@ -43,8 +43,7 @@ const Register: React.FC = () => {
     };
 
     return (
-        <div className="container register-container">
-            <h1 className="text-center mb-4 subtitle">Register</h1>
+        <div className="register-container">
             <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="name">
                     <Form.Label className="form-label">Name</Form.Label>

@@ -10,15 +10,6 @@
   text-align: left;
 }
 
-/* Title */
-.form-title {
-  text-align: center;
-  font-size: 1.8rem;
-  color: #333;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
 /* Form group */
 .form-group {
   margin-bottom: 20px;

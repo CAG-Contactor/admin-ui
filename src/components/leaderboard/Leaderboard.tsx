@@ -37,7 +37,6 @@ const Leaderboard: React.FC = () => {
 
     return (
         <div className="container leaderboard-container">
-            <h1 className="text-center mb-4 subtitle">Leaderboard</h1>
             {leaderboard.length === 0 ? (
                 <p className="text-center">No results available.</p>
             ) : (
@@ -49,7 +48,7 @@ const Leaderboard: React.FC = () => {
                     </ListGroup.Item>
                     {leaderboard.map((leaderBoardItem, index) => (
                         <ListGroup.Item key={index} className="d-flex justify-content-between align-items-center list-group-item">
-                            <div className="column">{leaderBoardItem.contestant.email}</div>
+                            <div className="column">{leaderBoardItem.contestant.name}</div>
                             <div className="column">{leaderBoardItem.result?.splitTime || "N/A"}</div>
                             <div className="column">{leaderBoardItem.result?.endTime || "N/A"}</div>
                         </ListGroup.Item>

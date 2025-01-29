@@ -17,12 +17,11 @@ color, but a complementary color.
 :root {
     --primary-color: #f0ebd8; /* Soft beige as the main color */
     --secondary-color: #8BAAAD; /* Soft green-blue for subtle accents */
-    --background-color: #68c7df; /* Light gray-blue background for softness */
-    --highlight-color: #D1B490; /* Sand-colored tone for attention */
+    --background-color: #ffffff; /* Light gray-blue background for softness */
+    --highlight-color: #ffffff; /* Sand-colored tone for attention */
     --on-highlight-color: #000000; /* Black color for text on highlight */
     --highlight-accent-color: #6A8D92; /* Sand-colored tone for attention */
-    --header-background: #68c7df; /* Dark muted blue-gray for the header */
-    --card-background: #f0ecd8; /* White for cards and sections */
+    --header-background: #ffffff; /* Dark muted blue-gray for the header */
     --shadow-color: rgba(0, 0, 0, 0.05); /* Very soft shadow */
 }
 
@@ -84,10 +83,8 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: var(--primary-color);
-    font-weight: bold;
 }
 
 nav ul li a:hover {
-    color: var(--highlight-color);
+    color: var(--on-highlight-color);
 }

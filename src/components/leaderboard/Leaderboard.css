@@ -1,9 +1,7 @@
 /* src/components/leaderboard/Leaderboard.css */
 
 .header-row {
-    background-color: var(--primary-color);
-    color: var(--background-color);
-    font-weight: bold;
+    color: var(--on-highlight-color);
     border: none;
 }
 

@@ -59,7 +59,6 @@ export const Contestants: React.FC<ContestantsProps> = () => {
 
     return (
         <div className="container list-group-container">
-            <h1 className="text-center mb-4 subtitle">Contestants</h1>
             {message && <p className="text-center message">{message}</p>}
             {contestants.length === 0 ? (
                 <p className="text-center">No contestants registered yet.</p>
@@ -68,10 +67,8 @@ export const Contestants: React.FC<ContestantsProps> = () => {
                     {contestants.map((contestant, index) => (
                         <ListGroup.Item key={index} className="d-flex justify-content-between align-items-center list-group-item">
                             <div>
-                                <strong>{contestant.name}</strong>
+                                {contestant.name}
                                 <br />
-                                <span>{contestant.email}</span>
-                                <br/>
                             </div>
                             <div className="button-container">
                                 <Button type="button" className="btn-clear" onClick={() => handleDeleteContestant(contestant)}>
