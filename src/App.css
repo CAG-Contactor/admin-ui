@@ -53,6 +53,6 @@
 .form-message {
   text-align: center;
   margin-top: 20px;
-  font-size: 1rem;
+  font-size: 1.5rem!important;
   color: #555;
 }

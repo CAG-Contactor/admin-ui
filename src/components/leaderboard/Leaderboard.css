@@ -1,8 +1,7 @@
-/* src/components/leaderboard/Leaderboard.css */
-
 .header-row {
     color: var(--on-highlight-color);
     border: none;
+    padding-bottom: 20px;
 }
 
 .column {

@@ -1,14 +1,11 @@
 @import './layout/MainLayout.css';
 
 /* List group styles */
-
-/* src/components/CommonStyles.css */
-
 .list-group-container {
     flex-grow: 1;
     overflow-y: auto;
-    max-width: 800px; /* Adjust the width as needed */
-    margin: 0 auto; /* Center the list group */
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .list-group-item {
@@ -18,7 +15,7 @@
     border-radius: 8px;
     border: 1px solid var(--secondary-color-olive);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    font-size: 0.9rem;
+    font-size: 1.5rem;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
@@ -27,7 +24,6 @@
 }
 
 /* Button styles */
-
 .button-container {
     display: flex;
     gap: 0.5rem;
@@ -39,8 +35,8 @@
     color: var(--on-highlight-color);
     box-shadow: 0 4px 6px var(--shadow-color);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    padding: 0.3rem 0.6rem; /* Adjust padding to make buttons smaller */
-    font-size: 0.8rem; /* Adjust font size to make buttons smaller */
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
 }
 
 .btn-submit:hover, .btn-clear:hover, .btn-abort:hover {

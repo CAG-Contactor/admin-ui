@@ -2,8 +2,8 @@
     background-color: var(--header-background);
     color: var(--primary-color);
     padding: 10px;
+    margin-bottom: 20px;
 }
-
 
 .layout {
     width: 100vw;
@@ -27,7 +27,15 @@
 
 .layout-nav ul li a {
     text-decoration: none;
-    font-size: 18px;
+    font-size: 1.5rem;
     color: var(--on-highlight-color);
+}
+
+.layout-nav ul li a.active {
+    font-weight: bold;
+    color: var(--on-highlight-color);
+    border-bottom: 2px solid var(--highlight-color);
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 

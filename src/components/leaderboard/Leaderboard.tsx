@@ -42,12 +42,14 @@ const Leaderboard: React.FC = () => {
             ) : (
                 <ListGroup>
                     <ListGroup.Item className="d-flex justify-content-between align-items-center list-group-item header-row">
+                        <div className="column">No.</div>
                         <div className="column">Name</div>
                         <div className="column">Split Time</div>
                         <div className="column">End Time</div>
                     </ListGroup.Item>
                     {leaderboard.map((leaderBoardItem, index) => (
                         <ListGroup.Item key={index} className="d-flex justify-content-between align-items-center list-group-item">
+                            <div className="column">{index + 1}</div>
                             <div className="column">{leaderBoardItem.contestant.name}</div>
                             <div className="column">{leaderBoardItem.result?.splitTime || "N/A"}</div>
                             <div className="column">{leaderBoardItem.result?.endTime || "N/A"}</div>
