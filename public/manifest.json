@@ -1,9 +1,9 @@
 {
-  "short_name": "Pump foil game",
-  "name": "Pump foil game",
+  "short_name": "Pumpfoil",
+  "name": "The Pumpfoil Experience",
   "icons": [
     {
-      "src": "favicon-32x32.png",
+      "src": "pump-foil.avif",
       "type": "image/png",
       "sizes": "32x32"
     }
