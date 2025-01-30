@@ -53,15 +53,12 @@ export const Contestants: React.FC<ContestantsProps> = () => {
         return <div>Loading...</div>;
     }
 
-    if (error) {
-        return <div>{error}</div>;
-    }
 
     return (
         <div className="container list-group-container">
             {message && <p className="text-center message">{message}</p>}
             {contestants.length === 0 ? (
-                <p className="text-center">No contestants registered yet.</p>
+                <p className="text-center message">No contestants registered yet.</p>
             ) : (
                 <ListGroup>
                     {contestants.map((contestant, index) => (
