@@ -36,7 +36,7 @@ const Leaderboard: React.FC = () => {
     }
 
     const formatTimestamp = (timestamp: number): string => {
-        const seconds = Math.floor(timestamp / 1000); // Convert to seconds and remove decimals
+        const seconds = (timestamp / 1000).toFixed(2); // Convert to seconds and format to 2 decimal places
         return seconds.toString(); // Convert to string
     };
 

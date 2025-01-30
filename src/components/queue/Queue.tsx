@@ -13,7 +13,6 @@ const Queue: React.FC<QueueProps> = () => {
     const [message, setMessage] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-    const [raceStarted, setRaceStarted] = useState<boolean>(false);
 
     useEffect(() => {
         const loadQueue = async () => {
@@ -33,7 +32,7 @@ const Queue: React.FC<QueueProps> = () => {
 
     useEffect(() => {
         if (message) {
-            const timer = setTimeout(() => setMessage(""), 2000);
+            const timer = setTimeout(() => setMessage(""), 3000);
             return () => clearTimeout(timer);
         }
     }, [message]);
@@ -43,7 +42,6 @@ const Queue: React.FC<QueueProps> = () => {
             await startRace(queueItem.timestamp);
             setQueue(queue.filter(item => item !== queueItem));
             setMessage(`${queueItem.contestant.name} has started the race!`);
-            setRaceStarted(true);
         } catch (err) {
             console.error("Failed to start race", err);
             setMessage("Failed to start race");
@@ -65,7 +63,6 @@ const Queue: React.FC<QueueProps> = () => {
         try {
             await abortRace();
             setMessage("Race has been aborted.");
-            setRaceStarted(false);
         } catch (err) {
             console.error("Failed to abort race", err);
             setMessage("Failed to abort race");
