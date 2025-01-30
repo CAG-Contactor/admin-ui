@@ -1,7 +1,17 @@
+header {
+    background-color: #f8f9fa; /* Ljusgrå bakgrundsfärg */
+    padding: 10px; /* Lite padding runt headern */
+    border-bottom: 1px solid #e0e0e0; /* Tunn bottenlinje */
+    font-size: 1.2em; /* Lite större textstorlek */
+    color: #333; /* Mörk textfärg */
+}
+
 .header-row {
-    color: var(--black);
+    background-color: #f1f1f1; /* Ljus bakgrundsfärg */
+    color: #555; /* Mörkare textfärg */
     border: none;
-    padding-bottom: 20px;
+    padding: 10px 0; /* Justera padding för att ge lite utrymme */
+    font-weight: bold; /* Gör texten fetstil */
 }
 
 .column {
