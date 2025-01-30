@@ -35,6 +35,11 @@ const Leaderboard: React.FC = () => {
         return <div>{error}</div>;
     }
 
+    const formatTimestamp = (timestamp: number): string => {
+        const seconds = Math.floor(timestamp / 1000); // Convert to seconds and remove decimals
+        return seconds.toString(); // Convert to string
+    };
+
     return (
         <div className="container list-group-container">
             {leaderboard.length === 0 ? (
@@ -51,8 +56,12 @@ const Leaderboard: React.FC = () => {
                         <ListGroup.Item key={index} className="d-flex justify-content-between align-items-center list-group-item">
                             <div className="column">{index + 1}</div>
                             <div className="column">{leaderBoardItem.contestant.name}</div>
-                            <div className="column">{leaderBoardItem.result?.splitTime || "N/A"}</div>
-                            <div className="column">{leaderBoardItem.result?.endTime || "N/A"}</div>
+                            <div className="column">
+                                {leaderBoardItem.result?.splitTime ? formatTimestamp(Number(leaderBoardItem.result.splitTime)) : "N/A"}
+                            </div>
+                            <div className="column">
+                                {leaderBoardItem.result?.endTime ? formatTimestamp(Number(leaderBoardItem.result.endTime)) : "N/A"}
+                            </div>
                         </ListGroup.Item>
                     ))}
                 </ListGroup>
