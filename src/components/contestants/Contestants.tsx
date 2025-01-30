@@ -32,7 +32,7 @@ export const Contestants: React.FC<ContestantsProps> = () => {
 
     useEffect(() => {
         if (message) {
-            const timer = setTimeout(() => setMessage(""), 3000);
+            const timer = setTimeout(() => setMessage(""), 2000);
             return () => clearTimeout(timer);
         }
     }, [message]);

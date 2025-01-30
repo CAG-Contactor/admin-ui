@@ -33,7 +33,7 @@ const Queue: React.FC<QueueProps> = () => {
 
     useEffect(() => {
         if (message) {
-            const timer = setTimeout(() => setMessage(""), 3000);
+            const timer = setTimeout(() => setMessage(""), 2000);
             return () => clearTimeout(timer);
         }
     }, [message]);
@@ -83,13 +83,11 @@ const Queue: React.FC<QueueProps> = () => {
     return (
         <div className="container list-group-container">
             {message && <p className="text-center message">{message}</p>}
-            {raceStarted && (
-                <div className="text-center mb-4">
-                    <Button className="btn-abort" onClick={handleAbortRace}>
-                        Abort game
-                    </Button>
-                </div>
-            )}
+            <div className="text-end mb-4">
+                <Button className="btn-abort" onClick={handleAbortRace}>
+                    Abort game
+                </Button>
+            </div>
             {queue.length === 0 ? (
                 <p className="text-center message">No contestants in queue.</p>
             ) : (
