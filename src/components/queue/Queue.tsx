@@ -98,6 +98,9 @@ const Queue: React.FC<QueueProps> = () => {
                         <ListGroup.Item key={index} className="d-flex justify-content-between align-items-center queue-item">
                             <div>
                                 {queueItem.contestant.name}
+                                <br />
+                                <span>{queueItem.contestant.email}</span>
+                                <br />
                             </div>
                             <div className="button-container">
                                 <Button variant="primary" className="btn-submit me-2" onClick={() => handleStartRace(queueItem)}>
