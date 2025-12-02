@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Contestant } from "../../types/types";
-import { fetchContestants, deleteContestant as deleteContestantAPI } from "../../api/BackendAPI";
-import { ListGroup, Button } from "react-bootstrap";
+import { deleteContestant as deleteContestantAPI } from "../../api/BackendAPI";
+import { useData } from "../../context/DataContext";
+import { ListGroup, Button, Modal, Spinner } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../index.css";
 import "../CommonStyles.css";
@@ -9,26 +10,10 @@ import "../CommonStyles.css";
 interface ContestantsProps {}
 
 export const Contestants: React.FC<ContestantsProps> = () => {
-    const [contestants, setContestants] = useState<Contestant[]>([]);
+    const { contestants, loading, setContestants } = useData();
     const [message, setMessage] = useState<string>("");
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
-
-    useEffect(() => {
-        const loadContestants = async () => {
-            try {
-                const data = await fetchContestants();
-                setContestants(data || []);
-            } catch (err) {
-                console.error("Failed to load contestants", err);
-                setError("Failed to load contestants");
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        loadContestants();
-    }, []);
+    const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
+    const [contestantToDelete, setContestantToDelete] = useState<Contestant | null>(null);
 
     useEffect(() => {
         if (message) {
@@ -37,20 +22,41 @@ export const Contestants: React.FC<ContestantsProps> = () => {
         }
     }, [message]);
 
-    const handleDeleteContestant = async (contestant: Contestant) => {
-        console.log("Contestants.tsx: Deleting contestant " + JSON.stringify(contestant));
+    const handleDeleteClick = (contestant: Contestant) => {
+        setContestantToDelete(contestant);
+        setShowDeleteModal(true);
+    };
+
+    const handleDeleteConfirm = async () => {
+        if (!contestantToDelete) return;
+
+        console.log("Contestants.tsx: Deleting contestant " + JSON.stringify(contestantToDelete));
         try {
-            await deleteContestantAPI(contestant);
-            setContestants(contestants.filter(c => c !== contestant));
-            setMessage(`${contestant.name} has been deleted successfully!`);
+            await deleteContestantAPI(contestantToDelete);
+            setContestants(contestants.filter(c => c !== contestantToDelete));
+            setMessage(`${contestantToDelete.name} has been deleted successfully!`);
         } catch (err) {
             console.error("Failed to delete contestant", err);
-            setError("Failed to delete contestant");
+            setMessage("Failed to delete contestant");
+        } finally {
+            setShowDeleteModal(false);
+            setContestantToDelete(null);
         }
     };
 
+    const handleDeleteCancel = () => {
+        setShowDeleteModal(false);
+        setContestantToDelete(null);
+    };
+
     if (loading) {
-        return <div>Loading...</div>;
+        return (
+            <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '200px' }}>
+                <Spinner animation="border" role="status" variant="primary">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+            </div>
+        );
     }
 
 
@@ -68,7 +74,7 @@ export const Contestants: React.FC<ContestantsProps> = () => {
                                 <br />
                             </div>
                             <div className="button-container">
-                                <Button type="button" className="btn-clear" onClick={() => handleDeleteContestant(contestant)}>
+                                <Button type="button" className="btn-clear" onClick={() => handleDeleteClick(contestant)}>
                                     Delete
                                 </Button>
                             </div>
@@ -76,6 +82,23 @@ export const Contestants: React.FC<ContestantsProps> = () => {
                     ))}
                 </ListGroup>
             )}
+
+            <Modal show={showDeleteModal} onHide={handleDeleteCancel} centered>
+                <Modal.Header closeButton>
+                    <Modal.Title>Confirm Delete</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Are you sure you want to delete <strong>{contestantToDelete?.name}</strong>?
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleDeleteCancel}>
+                        Cancel
+                    </Button>
+                    <Button variant="danger" onClick={handleDeleteConfirm}>
+                        Delete
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 };

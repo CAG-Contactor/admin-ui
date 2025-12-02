@@ -1,38 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { ListGroup } from "react-bootstrap";
+import React from "react";
+import { ListGroup, Spinner } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { LeaderBoardItem } from "../../types/types";
-import { fetchLeaderBoard } from "../../api/BackendAPI";
+import { useData } from "../../context/DataContext";
 import "../CommonStyles.css";
 import "./Leaderboard.css";
 
 const Leaderboard: React.FC = () => {
-    const [leaderboard, setLeaderboard] = useState<LeaderBoardItem[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
-
-    useEffect(() => {
-        const loadLeaderboard = async () => {
-            try {
-                const data = await fetchLeaderBoard();
-                setLeaderboard(data || []);
-            } catch (err) {
-                console.error("Failed to load leaderboard", err);
-                setError("Failed to load leaderboard");
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        loadLeaderboard();
-    }, []);
+    const { leaderboard, loading, error } = useData();
 
     if (loading) {
-        return <div>Loading...</div>;
+        return (
+            <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '200px' }}>
+                <Spinner animation="border" role="status" variant="primary">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+            </div>
+        );
     }
 
     if (error) {
-        return <div>{error}</div>;
+        return (
+            <div className="alert alert-danger text-center" role="alert">
+                {error}
+            </div>
+        );
     }
 
     const formatTimestamp = (timestamp: number): string => {

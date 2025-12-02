@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Errors, ContestantFormData } from "../../types/types";
 import { registerContestant } from "../../api/BackendAPI";
 import { validateContestantForm } from "../../utils/validation";
+import { useData } from "../../context/DataContext";
 import { Form, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../index.css";
@@ -9,6 +10,7 @@ import "../CommonStyles.css";
 import "./Register.css";
 
 const Register: React.FC = () => {
+    const { refreshData } = useData();
     const [formData, setFormData] = useState<ContestantFormData>({ name: "", email: "" });
     const [errors, setErrors] = useState<Errors>({});
     const [message, setMessage] = useState<string>("");
@@ -31,6 +33,7 @@ const Register: React.FC = () => {
             setMessage("Registration successful!");
             setFormData({ name: "", email: "" });
             setErrors({});
+            await refreshData(); // Refresh data after registration
         } catch (error) {
             setMessage("Registration failed.");
         }
