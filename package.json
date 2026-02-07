@@ -19,7 +19,7 @@
     "react-scripts": "^5.0.1",
     "typescript": "^5.7.2",
     "web-vitals": "^2.1.4",
-    "webpack": "^5.97.1"
+    "webpack": "^5.104.1"
   },
   "scripts": {
     "start": "react-scripts start",
